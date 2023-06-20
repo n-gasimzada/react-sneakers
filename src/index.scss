@@ -53,6 +53,7 @@ body {
 
   ul {
     margin-bottom: 40px !important;
+
     li {
       display: flex;
       align-items: flex-end;
@@ -71,7 +72,7 @@ body {
 
   .greenButton {
     position: relative;
-    
+
     &:hover {
       img {
         transform: translateX(5px);
@@ -160,6 +161,14 @@ header {
   h1 {
     margin: 0;
   }
+}
+
+.sneakers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 25px;
 }
 
 .card {
