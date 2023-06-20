@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Header'
-import Box from './Box'
+import Busket from './Busket'
 import SneakersItem from './SneakersItem'
 import axios from 'axios';
 
@@ -15,7 +15,6 @@ function Home() {
     }, [])
   return (
     <div className="wrapper clear">
-      <Box />
       <Header />
       <div className='content p-40'>
         <div className='mb-40 d-flex justify-between align-center'>
