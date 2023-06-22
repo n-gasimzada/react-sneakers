@@ -1,10 +1,12 @@
 import React from 'react'
 
 import styles from "./Busket.module.scss"
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeSneakers } from '../../redux/slices/sneakersSlice'
 
 function Busket({ open, setOpen }) {
     const items = useSelector((state) => state.sneakers.items)
+    const dispatch = useDispatch()
 
     const onClickChange = () => {
         setOpen(false)
@@ -25,7 +27,7 @@ function Busket({ open, setOpen }) {
                                         <p className='mb-5'>{obj.title}</p>
                                         <b>{obj.price}</b>
                                     </div>
-                                    <img className={styles.removeBtn} src='/img/remove.svg' alt='remove' />
+                                    <img onClick={() => dispatch(removeSneakers(obj.id))} className={styles.removeBtn} src='/img/remove.svg' alt='remove' />
                                 </div>
                             )}
                         </div>

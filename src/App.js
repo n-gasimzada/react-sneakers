@@ -1,9 +1,14 @@
 import React from 'react';
-import Home from './components/Home';
+import Home from './components/pages/Home';
+import { Routes, Route } from 'react-router-dom';
+import Bookmarks from './components/pages/BookMarks';
 
 function App() {
   return (
-    <Home />
+    <Routes>
+     <Route path='/' element={ <Home /> } />
+     <Route path='/bookmarks' element={ <Bookmarks />} />
+    </Routes>
   );
 }
 

@@ -17,6 +17,19 @@ body {
   margin: 50px auto;
 }
 
+.content {
+  .headerTitle {
+    position: relative;
+    margin-left: 40px;
+
+    img {
+      position: absolute;
+      left: -55px;
+      top: 4px;
+    }
+  }
+}
+
 
 .sneakers {
   display: grid;

@@ -1,9 +1,9 @@
 import React from 'react'
-import Header from './Header'
-import SneakersItem from './SneakersItem'
+import Header from '../Header'
+import SneakersItem from '../SneakersItem'
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearch } from '../redux/slices/searchSlice';
+import { setSearch } from '../../redux/slices/searchSlice';
 
 function Home() {
     const [getSneakers, setGetSneakers] = React.useState([]);

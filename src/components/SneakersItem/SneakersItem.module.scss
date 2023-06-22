@@ -41,3 +41,14 @@
     border: 1px solid #F2F2F2;
     border-radius: 8px;
   }
+
+  .cartAdd {
+    position: relative;
+
+    span {
+      position: absolute;
+      top: 9px;
+      right: -4px;
+      opacity: 0.3;
+    }
+  }

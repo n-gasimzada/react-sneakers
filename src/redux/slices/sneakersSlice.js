@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     items: [],
+    favorites: [],
 }
 
 export const sneakersSlice = createSlice({
@@ -11,12 +12,20 @@ export const sneakersSlice = createSlice({
 
     addSneakers: (state, action) => {
         state.items.push(action.payload)
+    },
+
+    removeSneakers: (state, action) => {
+      state.items = state.items.filter(obj => obj.id !== action.payload)
+    },
+
+    addFavorites: (state, action) => {
+      state.favorites.push(action.payload)
     }
   },
 })
 
 
 
-export const { addSneakers } = sneakersSlice.actions
+export const { addSneakers, removeSneakers, addFavorites } = sneakersSlice.actions
 
 export default sneakersSlice.reducer
