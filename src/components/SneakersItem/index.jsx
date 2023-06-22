@@ -1,12 +1,21 @@
 import React from 'react'
 
 import styles from "./SneakersItem.module.scss"
+import { useDispatch } from 'react-redux'
+import { addSneakers } from '../../redux/slices/sneakersSlice'
 
-function SneakersItem({ title, price, imageUrl}) {
+function SneakersItem({ id, title, price, imageUrl}) {
   const [select, setSelect] = React.useState(false)
+  const dispatch = useDispatch()
 
-  const onClickSelect = () => {
+  const onClickAdd = () => {
     setSelect(!select)
+    dispatch(addSneakers({
+      id,
+      title,
+      price,
+      imageUrl,
+    }))
   }
 
   return (
@@ -22,7 +31,7 @@ function SneakersItem({ title, price, imageUrl}) {
         <b>{price}</b>
       </div>
       <div>
-        <img onClick={onClickSelect} width={20} height={20} src={select ? '/img/sucsess.svg' : '/img/plus.svg'} alt='plus' />
+        <img onClick={onClickAdd} width={20} height={20} src={select ? '/img/sucsess.svg' : '/img/plus.svg'} alt='plus' />
       </div>
     </div>
   </div>

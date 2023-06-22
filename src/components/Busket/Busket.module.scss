@@ -32,7 +32,6 @@
     align-items: center;
     flex-direction: column;
     flex: 1;
-    display: none;
   
     p {
       width: 280px;
@@ -58,10 +57,16 @@
       }
     }
   }
+
+  .cartWrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    flex: 1;
+  }
   
   .items {
     flex: 1;
-    overflow: auto;
     margin-bottom: 40px;
   }
   
@@ -128,7 +133,6 @@
   .cartItem {
     border: 1px solid #f3f3f3;
     border-radius: 20px;
-    overflow: hidden;
     padding: 20px;
     display: flex;
     align-items: center;
