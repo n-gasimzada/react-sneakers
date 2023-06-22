@@ -4,23 +4,19 @@ import styles from "./Busket.module.scss"
 import { useSelector } from 'react-redux'
 
 function Busket({ open, setOpen }) {
-    const [empty, SetEmpty] = React.useState(true)
     const items = useSelector((state) => state.sneakers.items)
 
-    React.useEffect (() => {
-
-    }, [items])
-
-    console.log(items)
-
+    const onClickChange = () => {
+        setOpen(false)
+    }
 
     return (
         <div>
             {open && <div className={styles.cover}>
                 <div className={styles.box}>
-                    <h2 className='mb-30 d-flex justify-between'>Корзина <img onClick={() => setOpen(false)} className='cu-p' src='/img/remove.svg' alt='remove' /></h2>
+                    <h2 className='mb-30 d-flex justify-between'>Корзина <img onClick={onClickChange} className='cu-p' src='/img/remove.svg' alt='remove' /></h2>
 
-                    {empty ? <div className={styles.cartWrapper}>
+                    {items.length > 0 ? <div className={styles.cartWrapper}>
                         <div className={styles.items}>
                             {items.map((obj) =>
                                 <div className={styles.cartItem} >

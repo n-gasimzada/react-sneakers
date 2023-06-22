@@ -3,6 +3,8 @@ import "./Header.module.scss"
 import Box from '../Busket'
 function Header() {
   const [open, setOpen] = React.useState(false)
+
+  
   return (
     <div>
     <Box open={open} setOpen={setOpen} />
@@ -17,7 +19,7 @@ function Header() {
         <ul className='d-flex'>
           <li className='mr-30'>
             <img onClick={() => setOpen(true)} className='cu-p' width={18} height={18} src='/img/header/cart.svg' alt='cart' />
-            <span>1205 руб.</span>
+            <span>0 руб.</span>
           </li>
           <li>
             <img className='cu-p' width={18} height={18} src='/img/header/user.svg' alt='user' />

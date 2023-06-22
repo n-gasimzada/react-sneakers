@@ -30,7 +30,7 @@ function SneakersItem({ id, title, price, imageUrl}) {
         <span>Цена:</span>
         <b>{price}</b>
       </div>
-      <div>
+      <div className={styles.cartAdd}>
         <img onClick={onClickAdd} width={20} height={20} src={select ? '/img/sucsess.svg' : '/img/plus.svg'} alt='plus' />
       </div>
     </div>
