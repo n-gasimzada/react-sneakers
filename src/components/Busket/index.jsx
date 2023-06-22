@@ -9,7 +9,16 @@ function Busket({ open, setOpen }) {
             <div className={styles.box}>
                 <h2 className='mb-30 d-flex justify-between'>Корзина <img onClick={() => setOpen(false)} className='cu-p' src='/img/remove.svg' alt='remove' /></h2>
 
-                <div className={styles.b}>
+                <div className={styles.cartEmpty}>
+                <img className='mb-20' width={120} height={120} src='/img/empty-cart.png' alt='EmptyCart' />
+                <h2>Корзина пустая</h2>
+                <p className='opacity-6'>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
+                <button className={styles.greenButton}>
+                    <img src='/img/arrow.svg' alt='Arrow' /> Вернуться назад
+                </button>
+                </div>
+
+                <div className={styles.items}>
 
                     <div className={styles.cartItem} >
                         <div style={{ backgroundImage: "url(/img/sneakers/1.jpg)" }} className={styles.cartItemImg}></div>
