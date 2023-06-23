@@ -21,7 +21,7 @@ function Busket({ open, setOpen }) {
                     {items.length > 0 ? <div className={styles.cartWrapper}>
                         <div className={styles.items}>
                             {items.map((obj) =>
-                                <div className={styles.cartItem} >
+                                <div key={obj.id} className={styles.cartItem} >
                                     <div style={{ backgroundImage: `url(${obj.imageUrl})` }} className={styles.cartItemImg}></div>
                                     <div className='mr-20 flex'>
                                         <p className='mb-5'>{obj.title}</p>

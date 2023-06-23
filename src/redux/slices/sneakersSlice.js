@@ -15,20 +15,23 @@ export const sneakersSlice = createSlice({
     },
 
     removeSneakers: (state, action) => {
-      const findItem = state.items.find((obj) => obj.id === action.payload) 
-      if(findItem) {
-        state.items = state.items.filter(obj => obj.id !== findItem.id)
-      }
+
+        state.items = state.items.filter(obj => obj.id !== action.payload)
+        
     },
 
     addFavorites: (state, action) => {
-      state.favorites.push(action.payload)
+      state.favorites.push(action.payload) 
+    },
+
+    removeFavorites: (state, action) => {
+      state.favorites = state.favorites.filter(obj => obj.id !== action.payload)
     }
   },
 })
 
 
 
-export const { addSneakers, removeSneakers, addFavorites } = sneakersSlice.actions
+export const { addSneakers, removeSneakers, addFavorites, removeFavorites } = sneakersSlice.actions
 
 export default sneakersSlice.reducer

@@ -1,11 +1,16 @@
 import React from 'react'
 import Header from '../Header'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from "../SneakersItem/SneakersItem.module.scss"
+import { removeFavorites } from '../../redux/slices/sneakersSlice'
 
 function Bookmarks() {
   const myFavorites = useSelector(state => state.sneakers.favorites)
+  const dispatch = useDispatch()
+
+
+
   return (
     <div className="wrapper clear">
       <Header />
@@ -19,7 +24,7 @@ function Bookmarks() {
           {myFavorites.map((obj) => 
             <div className={styles.card}>
               <div className={styles.favorite}>
-                <img src='/img/hliked.svg' alt='liked' />
+                <img onClick={() => dispatch(removeFavorites(obj.id))} src='/img/hliked.svg' alt='liked' />
               </div>
               <img width={133} height={112} src={obj.imageUrl} alt='sneakers' />
               <h5>{obj.title}</h5>
