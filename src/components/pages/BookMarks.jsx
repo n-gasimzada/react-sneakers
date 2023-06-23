@@ -21,7 +21,7 @@ function Bookmarks() {
 
         <div className='sneakers'>
 
-          {myFavorites.map((obj) => 
+          {myFavorites.filter((obj) => obj.id).map((obj) => 
             <div className={styles.card}>
               <div className={styles.favorite}>
                 <img onClick={() => dispatch(removeFavorites(obj.id))} src='/img/hliked.svg' alt='liked' />

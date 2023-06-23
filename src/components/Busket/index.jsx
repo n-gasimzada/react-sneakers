@@ -2,14 +2,21 @@ import React from 'react'
 
 import styles from "./Busket.module.scss"
 import { useDispatch, useSelector } from 'react-redux'
-import { removeSneakers } from '../../redux/slices/sneakersSlice'
+import { addOrder, clearCart, removeSneakers } from '../../redux/slices/sneakersSlice'
+import OrderProcess from '../OrderProcess'
 
 function Busket({ open, setOpen }) {
     const items = useSelector((state) => state.sneakers.items)
+    const order = useSelector((state) => state.sneakers.order)
     const dispatch = useDispatch()
 
     const onClickChange = () => {
         setOpen(false)
+    }
+
+    const onClickSendOrder = () => {
+        dispatch(addOrder(items))
+        dispatch(clearCart())
     }
 
     return (
@@ -45,20 +52,16 @@ function Busket({ open, setOpen }) {
                                 </li>
                             </ul>
 
-                            <button className={styles.greenButton}>Оформить заказ <img src='/img/arrow.svg' alt='arrow' /></button>
+                            <button onClick={onClickSendOrder} className={styles.greenButton}>Оформить заказ <img src='/img/arrow.svg' alt='arrow' /></button>
                         </div>
                     </div>
                         :
-                        <div div className={styles.cartEmpty} >
-                            <img className='mb-20' width={120} height={120} src='/img/empty-cart.png' alt='EmptyCart' />
-                            <h2>Корзина пустая</h2>
-                            <p className='opacity-6'>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
-                            <button onClick={onClickChange} className={styles.greenButton}>
-                                <img src='/img/arrow.svg' alt='Arrow' /> Вернуться назад
-                            </button>
-                        </div>
-
-
+                        <OrderProcess 
+                        title={order.length > 0 ? "Заказ оформлен!" : "Корзина пустая"}
+                        description={order.length > 0 ? "Ваш заказ #18 скоро будет передан курьерской доставке" : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."}
+                        image={order.length > 0 ? "/img/order.png" : "/img/empty-cart.png"}
+                        onClickChange={onClickChange}
+                        />
                     }
 
                 </div>

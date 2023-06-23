@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     items: [],
     favorites: [],
+    order: []
 }
 
 export const sneakersSlice = createSlice({
@@ -20,18 +21,26 @@ export const sneakersSlice = createSlice({
         
     },
 
+    clearCart: (state) => {
+      state.items = []
+    },
+
     addFavorites: (state, action) => {
       state.favorites.push(action.payload) 
     },
 
     removeFavorites: (state, action) => {
       state.favorites = state.favorites.filter(obj => obj.id !== action.payload)
+    },
+
+    addOrder: (state, action) => {
+      state.order.push(action.payload)
     }
   },
 })
 
 
 
-export const { addSneakers, removeSneakers, addFavorites, removeFavorites } = sneakersSlice.actions
+export const { addSneakers, removeSneakers, addFavorites, removeFavorites, addOrder, clearCart } = sneakersSlice.actions
 
 export default sneakersSlice.reducer
