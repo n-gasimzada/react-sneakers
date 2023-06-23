@@ -29,6 +29,10 @@ function SneakersItem({ id, title, price, imageUrl }) {
     }))
   }
 
+  React.useEffect(() => {
+
+  }, [liked])
+
   return (
     <div className={styles.card}>
       <div className={styles.favorite}>

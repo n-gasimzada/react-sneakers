@@ -53,7 +53,7 @@ function Busket({ open, setOpen }) {
                             <img className='mb-20' width={120} height={120} src='/img/empty-cart.png' alt='EmptyCart' />
                             <h2>Корзина пустая</h2>
                             <p className='opacity-6'>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
-                            <button className={styles.greenButton}>
+                            <button onClick={onClickChange} className={styles.greenButton}>
                                 <img src='/img/arrow.svg' alt='Arrow' /> Вернуться назад
                             </button>
                         </div>

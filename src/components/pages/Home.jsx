@@ -4,11 +4,25 @@ import SneakersItem from '../SneakersItem'
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearch } from '../../redux/slices/searchSlice';
+import debounce from 'lodash.debounce';
 
 function Home() {
     const [getSneakers, setGetSneakers] = React.useState([]);
     const search = useSelector(state => state.search.search)
+    const [inputValue, setInputValue] = React.useState('')
     const dispatch = useDispatch()
+
+    const updateInputValue = React.useCallback(
+      debounce((str) => {
+        dispatch(setSearch(str))
+      }, 250),
+      [],
+    )
+
+    const onChangeInput = (event) => {
+      setInputValue(event.target.value)
+      updateInputValue(event.target.value)
+    }
 
     React.useEffect(() => {
         axios.get("http://localhost:3000/sneakers.json")
@@ -24,7 +38,7 @@ function Home() {
           <h1>Все кроссовки</h1>
           <div className='search-block d-flex'>
             <img src='/img/search.svg' alt='search' />
-            <input placeholder='Поиск...' value={search} onChange={(event) => dispatch(setSearch(event.target.value))} />
+            <input placeholder='Поиск...' value={inputValue} onChange={(event) => onChangeInput(event)} />
             {search && <img width={20} height={20} className='remove' onClick={() => dispatch(setSearch(''))} src='/img/remove.svg' alt='remove' />}
           </div>
         </div>
