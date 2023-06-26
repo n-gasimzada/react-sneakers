@@ -28,7 +28,7 @@ function Home() {
 
   React.useEffect(() => {
     try {
-      axios.get("http://localhost:3000/sneakers.json")
+      axios.get("https://111e9586cf2479e7.mokky.ru/sneakers")
         .then(({ data }) => {
           setGetSneakers(data)
         })
