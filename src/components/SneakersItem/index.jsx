@@ -51,7 +51,7 @@ function SneakersItem({ id, title, price, imageUrl }) {
       <div className='d-flex justify-between align-center'>
         <div className='d-flex flex-column'>
           <span>Цена:</span>
-          <b>{price}</b>
+          <b>{price} руб.</b>
         </div>
         <div className={styles.cartAdd}>
           <img onClick={onClickAdd} width={20} height={20} src={sneakers.find((obj) => obj.id === id) ? '/img/sucsess.svg' : '/img/plus.svg'} alt='plus' />

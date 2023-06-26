@@ -2,8 +2,12 @@ import React from 'react'
 import "./Header.module.scss"
 import Box from '../Busket'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 function Header() {
   const [open, setOpen] = React.useState(false)
+  const items = useSelector(state => state.sneakers.items)
+  const totalPrice = items.reduce((sum, obj) => obj.price + sum, 0)
+  console.log(items)
 
   
   return (
@@ -22,16 +26,18 @@ function Header() {
         <ul className='d-flex'>
           <li className='mr-30'>
             <img onClick={() => setOpen(true)} className='cu-p' width={18} height={18} src='/img/header/cart.svg' alt='cart' />
-            <span>0 руб.</span>
+            <span>{totalPrice}руб.</span>
           </li>
           <Link to='/bookmarks'>
           <li>
             <img src='/img/favorite.svg' alt='unliked'/>
           </li>
           </Link>
+          <Link to="/mypurchases">
           <li>
             <img className='cu-p' width={18} height={18} src='/img/header/user.svg' alt='user' />
           </li>
+          </Link>
         </ul>
       </header>
     </div>

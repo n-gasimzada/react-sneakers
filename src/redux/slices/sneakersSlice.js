@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     items: [],
     favorites: [],
-    order: []
+    order: [],
+    totalPrice: 0,
 }
 
 export const sneakersSlice = createSlice({
@@ -34,7 +35,7 @@ export const sneakersSlice = createSlice({
     },
 
     addOrder: (state, action) => {
-      state.order.push(action.payload)
+      state.order = action.payload
     }
   },
 })

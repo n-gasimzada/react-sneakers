@@ -7,6 +7,8 @@ import OrderProcess from '../OrderProcess'
 
 function Busket({ open, setOpen }) {
     const items = useSelector((state) => state.sneakers.items)
+    const totalPrice = items.reduce((sum, obj) => sum + obj.price, 0)
+    const tax = (totalPrice * 5 / 100)
     const order = useSelector((state) => state.sneakers.order)
     const dispatch = useDispatch()
 
@@ -32,7 +34,7 @@ function Busket({ open, setOpen }) {
                                     <div style={{ backgroundImage: `url(${obj.imageUrl})` }} className={styles.cartItemImg}></div>
                                     <div className='mr-20 flex'>
                                         <p className='mb-5'>{obj.title}</p>
-                                        <b>{obj.price}</b>
+                                        <b>{obj.price} руб.</b>
                                     </div>
                                     <img onClick={() => dispatch(removeSneakers(obj.id))} className={styles.removeBtn} src='/img/remove.svg' alt='remove' />
                                 </div>
@@ -43,12 +45,12 @@ function Busket({ open, setOpen }) {
                                 <li>
                                     <span>Итого:</span>
                                     <div></div>
-                                    <b>21 498 руб.</b>
+                                    <b>{totalPrice} руб.</b>
                                 </li>
                                 <li>
                                     <span>Налог 5%:</span>
                                     <div></div>
-                                    <b>1074 руб.</b>
+                                    <b>{tax} руб.</b>
                                 </li>
                             </ul>
 
